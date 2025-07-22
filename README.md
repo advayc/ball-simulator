@@ -1,21 +1,19 @@
 # Ball Simulator - Interactive Physics Demo
 
-🎮 **[▶️ Play Live Demo](https://advayc.github.io/ball-simulator/)** 🎮
+ **[▶️ Play Live Demo](https://advayc.github.io/ball-simulator/)** 
 
 A mesmerizing physics-based ball simulation with dynamic rainbow colors and synchronized audio segments that play on collision.
 
-## ✨ Features
+##  Features
 
-- **🌈 Dynamic Rainbow Colors**: Continuously cycling rainbow effect
-- **🎵 Audio Synchronization**: Plays sequential 0.2s segments of UNITY song on each collision  
+- **Dynamic Rainbow Colors**: Continuously cycling rainbow effect
+- ** Audio Synchronization**: Plays sequential 0.2s segments of UNITY song on each collision  
 - **⚡ Real-time Physics**: Gravity simulation with realistic collision detection
-- **🎯 Smart Collisions**: Ball bounces off circular boundaries and window edges
-- **📈 Progressive Growth**: Ball grows with each collision until reset
-- **🔄 Continuous Demo**: Auto-resets for endless entertainment
-- **🌐 Web-Optimized**: Runs directly in browser via WebAssembly
-- **📱 Cross-Platform**: Works on desktop and mobile browsers
-
-## 🚀 Quick Start
+- ** Smart Collisions**: Ball bounces off circular boundaries and window edges
+- ** Progressive Growth**: Ball grows with each collision until reset
+- ** Continuous Demo**: Auto-resets for endless entertainment
+- ** Web-Optimized**: Runs directly in browser via WebAssembly
+- ** Cross-Platform**: Works on desktop and mobile browsers
 
 ### Play Online (Recommended)
 Just visit: **https://advayc.github.io/ball-simulator/**
