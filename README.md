@@ -8,7 +8,7 @@ A mesmerizing physics-based ball simulation with dynamic rainbow colors and sync
 
 - **Dynamic Rainbow Colors**: Continuously cycling rainbow effect
 - ** Audio Synchronization**: Plays sequential 0.2s segments of UNITY song on each collision  
-- **⚡ Real-time Physics**: Gravity simulation with realistic collision detection
+- ** Real-time Physics**: Gravity simulation with realistic collision detection
 - ** Smart Collisions**: Ball bounces off circular boundaries and window edges
 - ** Progressive Growth**: Ball grows with each collision until reset
 - ** Continuous Demo**: Auto-resets for endless entertainment

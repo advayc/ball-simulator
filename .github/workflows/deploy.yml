@@ -18,6 +18,15 @@ jobs:
       with:
         python-version: '3.11'
         
+    - name: Install FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+        
+    - name: Convert Audio to OGG
+      run: |
+        ffmpeg -i UNITY.mp3 UNITY.ogg
+        
     - name: Install dependencies
       run: |
         pip install pygame pygbag

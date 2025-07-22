@@ -24,15 +24,23 @@ is_playing = False
 
 # Initialize audio (may not work in web build)
 try:
-    full_song = pygame.mixer.Sound('UNITY.mp3')
+    # Load the audio file (OGG format for web compatibility)
+    full_song = pygame.mixer.Sound('UNITY.ogg')
     song_length = full_song.get_length()
     total_segments = int(song_length / segment_duration)
     print(f"Loaded audio: {song_length:.2f} seconds, {total_segments} segments")
 except Exception as e:
-    print(f"Audio not available in web build: {e}")
-    full_song = None
-    song_length = 73.0  # fallback duration
-    total_segments = int(song_length / segment_duration)
+    # Try MP3 as fallback for local runs
+    try:
+        full_song = pygame.mixer.Sound('UNITY.mp3')
+        song_length = full_song.get_length()
+        total_segments = int(song_length / segment_duration)
+        print(f"Loaded audio (MP3): {song_length:.2f} seconds, {total_segments} segments")
+    except Exception as e2:
+        print(f"Audio not available: {e2}")
+        full_song = None
+        song_length = 73.0  # fallback duration
+        total_segments = int(song_length / segment_duration)
 
 class Ball():
     def __init__(self, x, y, radius, color):
