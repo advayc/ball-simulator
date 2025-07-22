@@ -1,31 +1,26 @@
-# Gravity Collision Simulator
+# Ball Simulator - Interactive Physics Demo
 
-A physics-based ball simulation built with Python and Pygame, featuring realistic gravity and collision detection.
+🎮 **[▶️ Play Live Demo](https://advayc.github.io/ball-simulator/)** 🎮
 
-## Features
+A mesmerizing physics-based ball simulation with dynamic rainbow colors and synchronized audio segments that play on collision.
 
-- **Realistic Physics**: Gravity simulation with proper acceleration
-- **Collision Detection**: Ball bounces off circular boundaries and window edges
-- **Energy Damping**: Energy loss on collisions for realistic behavior
-- **Anti-aliased Graphics**: Smooth, high-quality rendering
-- **Interactive Controls**: Reset functionality with keyboard input
+## ✨ Features
 
-## Requirements
+- **🌈 Dynamic Rainbow Colors**: Continuously cycling rainbow effect
+- **🎵 Audio Synchronization**: Plays sequential 0.2s segments of UNITY song on each collision  
+- **⚡ Real-time Physics**: Gravity simulation with realistic collision detection
+- **🎯 Smart Collisions**: Ball bounces off circular boundaries and window edges
+- **📈 Progressive Growth**: Ball grows with each collision until reset
+- **🔄 Continuous Demo**: Auto-resets for endless entertainment
+- **🌐 Web-Optimized**: Runs directly in browser via WebAssembly
+- **📱 Cross-Platform**: Works on desktop and mobile browsers
 
-- Python 3.6+
-- Pygame library
+## 🚀 Quick Start
 
-## Installation
+### Play Online (Recommended)
+Just visit: **https://advayc.github.io/ball-simulator/**
 
-1. Clone or download this repository
-2. Install the required dependencies:
-   ```bash
-   pip install pygame
-   ```
-
-## Usage
-
-Run the simulation:
+### Run Locally
 ```bash
 python main.py
 ```
