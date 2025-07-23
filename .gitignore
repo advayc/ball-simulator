@@ -1,1 +1,26 @@
-venv
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Pygbag build files
+.pygbag/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db

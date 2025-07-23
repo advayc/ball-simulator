@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Animation Simulator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .progress {
+            width: 300px;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: #57ff14;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 100vh;
+        }
+        
+        #pygame-canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <h2>Ball Animation Simulator</h2>
+        <p>Loading simulation...</p>
+        <div class="progress">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        <p id="status">Preparing WebAssembly...</p>
+    </div>
+
+    <script>
+        // Update progress bar when the game is loading
+        window.addEventListener('pygame_loaded', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+        
+        // Update progress during loading
+        window.addEventListener('pygame_progress', function(e) {
+            const progress = e.detail.progress;
+            document.getElementById('progress').style.width = `${progress * 100}%`;
+            document.getElementById('status').innerText = e.detail.status || 'Loading...';
+        });
+    </script>
+
+    <!-- Pygbag will insert the appropriate script tag here -->
+</body>
+</html>
