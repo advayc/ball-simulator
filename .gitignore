@@ -5,7 +5,8 @@ __pycache__/
 
 # Distribution / packaging
 build/
-dist/
+# dist/ - Allow dist for GitHub Pages
+*.egg-info/
 
 # Virtual environments
 venv/
@@ -14,6 +15,7 @@ ENV/
 
 # Pygbag build files
 .pygbag/
+build/web-cache/
 
 # IDE files
 .idea/
@@ -24,3 +26,6 @@ ENV/
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Deployment artifacts (keep in repo for GitHub Pages)
+# dist/ - commented out to allow GitHub Pages deployment

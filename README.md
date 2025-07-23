@@ -21,26 +21,60 @@ A mesmerizing physics-based ball simulation with dynamic visual styles including
 ### Play Online (Recommended)
 Just visit: **https://advayc.github.io/ball-simulator/**
 
+### Install as Package
+```bash
+# Install from PyPI (when published)
+pip install ball-simulator
+
+# Or install from source
+git clone https://github.com/advayc/ball-simulator.git
+cd ball-simulator
+pip install -e .
+```
+
 ### Run Locally
 ```bash
+# Clone the repository
+git clone https://github.com/advayc/ball-simulator.git
+cd ball-simulator
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the simulator
 python main.py
 ```
 
 ### Deploy to Web
-To deploy your simulator to the web, you'll need Pygbag:
+The project is set up for easy web deployment using pygbag:
 
+#### Automatic Deployment (GitHub Pages)
+1. Push your changes to the `main` branch
+2. GitHub Actions will automatically build and deploy to GitHub Pages
+3. Visit your deployed simulator at: `https://yourusername.github.io/ball-simulator/`
+
+#### Manual Build
 ```bash
-# Install Pygbag
+# Make sure you have pygbag installed
 pip install pygbag
 
-# Build and run locally
-pygbag --port 8000 main.py
+# Build for web
+./build.sh
 
-# Build for deployment
-pygbag --build --ume_block 0 main.py
+# Serve locally for testing
+python3 -m http.server 8080 -d dist
 ```
 
-After building, upload the `build/web` directory to your web server or GitHub Pages.
+#### Alternative Deployments
+```bash
+# For Netlify
+npm run deploy:netlify
+
+# For Vercel  
+npm run deploy:vercel
+
+# Or manually upload the 'dist' directory to any web hosting service
+```
 
 ### Controls
 

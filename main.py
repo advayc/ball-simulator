@@ -36,8 +36,6 @@ STYLES = {
 # Default style - make sure it's one that works well
 current_style = 'Classic'
 
-# This line is redundant as we set it above
-
 class Ball():
     def __init__(self, x, y, radius, color):
         self.x = x
@@ -290,5 +288,9 @@ async def main():
     pygame.quit()
 
 # Handle web platform correctly
-if __name__ == "__main__":
+def start():
+    """Entry point for the ball simulator."""
     asyncio.run(main())
+
+if __name__ == "__main__":
+    start()
