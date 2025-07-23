@@ -33,7 +33,10 @@ STYLES = {
     'Classic': {'color_change': False, 'trail': False, 'pulse': False, 'particles': False}
 }
 
-current_style = 'Rainbow'
+# Default style - make sure it's one that works well
+current_style = 'Classic'
+
+# This line is redundant as we set it above
 
 class Ball():
     def __init__(self, x, y, radius, color):
@@ -62,12 +65,16 @@ class Ball():
             rgb = colorsys.hsv_to_rgb(hue_normalized, 1.0, 1.0)
             self.color = (int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255))
         else:
-            self.color = self.base_color
+            # Always ensure we have a visible color - pure white (255,255,255)
+            self.color = (255, 255, 255)
             
         if style['pulse']:
             self.pulse_phase = (self.pulse_phase + 0.1) % (2 * math.pi)
             pulse_factor = 1 + 0.2 * math.sin(self.pulse_phase)
             self.radius = int(self.base_radius * pulse_factor)
+        else:
+            # Reset radius to base for non-pulse styles
+            self.radius = self.base_radius
         
         if style['trail']:
             self.trail.append(((self.x, self.y), self.color))
@@ -180,6 +187,9 @@ class Ball():
                 color = (*particle['color'][:3], alpha)
                 pygame.draw.circle(screen, color, 
                                 (int(particle['x']), int(particle['y'])), 3)
+        
+        # Always draw the main ball (this was missing!)
+        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.radius)
 
 def draw_buttons():
     global current_style
