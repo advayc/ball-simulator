@@ -33,15 +33,24 @@ jobs:
         python -m pip install --upgrade pip
         pip install pygbag pygame-ce
     
+    - name: Install FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+    
+    - name: Create build directory
+      run: |
+        mkdir -p build/web
+    
     - name: Build with pygbag
       run: |
         python -m pygbag \
           --build \
           --width 800 \
           --height 600 \
-          --app_name "Ball_Simulator" \
+          --app_name "simulator" \
           --icon "assets/ball.png" \
-          --template "custom.tmpl" \
+          --template "web.tmpl" \
           --ume_block 0 \
           main.py
     
@@ -54,6 +63,8 @@ jobs:
         path: './build/web'
 
   deploy:
+    # In GitHub, the environment is called github-pages
+    # Deployments to GitHub Pages use this environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

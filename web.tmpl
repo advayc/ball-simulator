@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Simulator</title>
+    <meta name="description" content="A mesmerizing physics-based ball simulation with dynamic visual styles">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        canvas {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin: 20px;
+            display: block;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+        .footer {
+            margin-top: 20px;
+            opacity: 0.7;
+            text-align: center;
+        }
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+    <!-- This is where PyGBag will inject its scripts -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+</head>
+<body>
+    <h1>🎱 Ball Simulator</h1>
+    <div id="loading">Loading Ball Simulator...</div>
+    <div id="pygame_canvas" class="emscripten"></div>
+    <div class="footer">
+        <p>Built with ❤️ using <strong>Python</strong> + <strong>Pygame</strong></p>
+        <p><a href="https://github.com/advayc/ball-simulator" target="_blank" rel="noopener">View Source Code</a></p>
+    </div>
+    
+    <script type="text/javascript">
+        // Hide loading message after the canvas appears
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    const canvas = document.querySelector('canvas');
+                    if (canvas) {
+                        const loading = document.getElementById('loading');
+                        if (loading) {
+                            loading.style.display = 'none';
+                        }
+                        observer.disconnect();
+                    }
+                }
+            });
+        });
+        
+        observer.observe(document.getElementById('pygame_canvas'), { 
+            childList: true
+        });
+    </script>
+    
+    <!-- PYGBAG will insert content here -->
+</body>
+</html>

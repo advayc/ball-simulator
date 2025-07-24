@@ -38,15 +38,19 @@ def build_for_web():
     os.chdir(project_dir)
     
     try:
+        # Prepare the build directory
+        build_dir = os.path.join(project_dir, "build", "web")
+        os.makedirs(build_dir, exist_ok=True)
+        
         # Build with pygbag
         cmd = [
             sys.executable, "-m", "pygbag",
             "--build",
             "--width", "800",
             "--height", "600", 
-            "--app_name", "Ball_Simulator",
+            "--app_name", "simulator",
             "--icon", "assets/ball.png",
-            "--template", "custom.tmpl",
+            "--template", "web.tmpl",
             "--ume_block", "0",
             "main.py"
         ]
