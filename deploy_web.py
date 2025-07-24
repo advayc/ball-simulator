@@ -45,14 +45,11 @@ def build_for_web():
             "--width", "800",
             "--height", "600", 
             "--app_name", "Ball_Simulator",
-            "--icon", "assets/ball.png" if os.path.exists("assets/ball.png") else None,
-            "--html", "index.html",
+            "--icon", "assets/ball.png",
+            "--template", "custom.tmpl",
             "--ume_block", "0",
             "main.py"
         ]
-        
-        # Remove None values from command
-        cmd = [item for item in cmd if item is not None]
         
         print("🚀 Building for web...")
         print(f"Running: {' '.join(cmd)}")

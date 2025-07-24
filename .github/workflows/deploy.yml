@@ -36,10 +36,12 @@ jobs:
     - name: Build with pygbag
       run: |
         python -m pygbag \
+          --build \
           --width 800 \
           --height 600 \
-          --app_name "Ball Simulator" \
-          --template custom \
+          --app_name "Ball_Simulator" \
+          --icon "assets/ball.png" \
+          --template "custom.tmpl" \
           --ume_block 0 \
           main.py
     
@@ -47,7 +49,7 @@ jobs:
       uses: actions/configure-pages@v3
       
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: './build/web'
 
@@ -61,4 +63,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
