@@ -234,13 +234,10 @@ ball = Ball(center_x - 200, center_y, 15, white)
 clock = pygame.time.Clock()
 
 async def main():
+    """Main async function for PyGBag compatibility"""
     global center_x, center_y, boundary_radius, size, width, height, screen
     
-    if is_web:
-        print("🌐 Starting Ball Simulator on Web...")
-    else:
-        print("🖥️ Starting Ball Simulator on Desktop...")
-    await asyncio.sleep(0.1)  # Give time for web environment to stabilize
+    print("🌐 Starting Ball Simulator...")
     
     running = True
     
@@ -297,23 +294,13 @@ async def main():
         # Web-friendly timing
         clock.tick(60)
         
-        # Essential for web: yield control back to browser
-        if is_web:
-            # Use a small sleep value for web to maintain responsiveness
-            await asyncio.sleep(0.001)
-        else:
-            # For desktop, a quick yield is fine
-            await asyncio.sleep(0)
+        # Essential for PyGBag: yield control back to browser
+        await asyncio.sleep(0)
 
     print("🌐 Ball Simulator stopped")
     pygame.quit()
 
 # Handle web platform correctly
 if __name__ == "__main__":
-    # For pygbag compatibility
-    if is_web:
-        # When running in browser via pygbag
-        asyncio.run(main())
-    else:
-        # For desktop execution
-        asyncio.run(main())
+    # This is the entry point for PyGBag
+    asyncio.run(main())

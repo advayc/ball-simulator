@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ball Simulator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        h1 {
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 2em;
+        }
+        
+        #pygame_canvas {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        canvas {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .loading {
+            font-size: 1.2em;
+            color: #4CAF50;
+            margin: 20px;
+            text-align: center;
+        }
+        
+        .footer {
+            margin-top: 10px;
+            opacity: 0.7;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎱 Ball Simulator</h1>
+    <div class="loading" id="loading">🔄 Loading Ball Simulator...</div>
+    
+    <div id="pygame_canvas">
+        <!-- PyGBag will insert the canvas here -->
+    </div>
+    
+    <div class="footer">
+        <p>Built with ❤️ using <strong>Python</strong> + <strong>Pygame</strong> + <strong>PyGBag</strong></p>
+        <p><a href="https://github.com/advayc/ball-simulator" target="_blank" rel="noopener">View Source Code</a></p>
+    </div>
+
+    <script>
+        // Hide loading message when canvas appears
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+        
+        // Try to hide loading after a few seconds as fallback
+        setTimeout(hideLoading, 5000);
+        
+        // Hide loading when a canvas appears
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    const canvas = document.querySelector('canvas');
+                    if (canvas) {
+                        hideLoading();
+                        observer.disconnect();
+                    }
+                }
+            });
+        });
+        
+        observer.observe(document.body, { 
+            childList: true, 
+            subtree: true 
+        });
+    </script>
+</body>
+</html>

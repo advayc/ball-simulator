@@ -50,7 +50,6 @@ def build_for_web():
             "--height", "600", 
             "--app_name", "simulator",
             "--icon", "assets/ball.png",
-            "--template", "web.tmpl",
             "--ume_block", "0",
             "main.py"
         ]
