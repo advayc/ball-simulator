@@ -75,7 +75,6 @@ class Ball():
             pulse_factor = 1 + 0.2 * math.sin(self.pulse_phase)
             self.radius = int(self.base_radius * pulse_factor)
         else:
-            # Reset radius to base for non-pulse styles
             self.radius = self.base_radius
         
         if style['trail']:
