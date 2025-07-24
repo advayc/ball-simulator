@@ -6,15 +6,19 @@ import random
 import sys
 
 # Check if running in browser
-is_web = 'pytest' in sys.modules or 'PYGBAG' in sys.modules or '__EMSCRIPTEN__' in sys.modules
+try:
+    import platform
+    is_web = platform.system() == "Emscripten"
+except:
+    is_web = False
 
-# Initialize pygame for web compatibility
+# Initialize pygame
 pygame.init()
 pygame.font.init()
 
-# Set up display with proper flags for web
-flags = pygame.RESIZABLE if is_web else 0
+# Set up display
 size = (800, 600)
+flags = pygame.RESIZABLE if is_web else 0
 green = (57, 255, 20)
 white = (255, 255, 255)
 screen = pygame.display.set_mode(size, flags)
@@ -231,6 +235,13 @@ clock = pygame.time.Clock()
 
 async def main():
     global center_x, center_y, boundary_radius, size, width, height, screen
+    
+    if is_web:
+        print("🌐 Starting Ball Simulator on Web...")
+    else:
+        print("🖥️ Starting Ball Simulator on Desktop...")
+    await asyncio.sleep(0.1)  # Give time for web environment to stabilize
+    
     running = True
     
     while running:
@@ -249,9 +260,11 @@ async def main():
             elif event.type == pygame.FINGERDOWN or event.type == pygame.MOUSEBUTTONDOWN:
                 # Handle touch/mouse events for button clicks
                 pos = pygame.mouse.get_pos() if event.type == pygame.MOUSEBUTTONDOWN else (event.x * width, event.y * height)
+                button_rects = draw_buttons()  # Get current button rectangles
                 for style, rect in button_rects.items():
                     if rect.collidepoint(pos):
                         current_style = style
+                        print(f"🎨 Switched to {style} mode")
                         break
 
         screen.fill((0, 0, 0))
@@ -279,18 +292,28 @@ async def main():
             ball.growth_accumulator = 0
             ball.trail.clear()
             ball.particles.clear()
-            print(f"Ball reset with style: {current_style}")
+            print(f"🔄 Ball reset with style: {current_style}")
         
         # Web-friendly timing
         clock.tick(60)
-        await asyncio.sleep(0)
+        
+        # Essential for web: yield control back to browser
+        if is_web:
+            # Use a small sleep value for web to maintain responsiveness
+            await asyncio.sleep(0.001)
+        else:
+            # For desktop, a quick yield is fine
+            await asyncio.sleep(0)
 
+    print("🌐 Ball Simulator stopped")
     pygame.quit()
 
 # Handle web platform correctly
-def start():
-    """Entry point for the ball simulator."""
-    asyncio.run(main())
-
 if __name__ == "__main__":
-    start()
+    # For pygbag compatibility
+    if is_web:
+        # When running in browser via pygbag
+        asyncio.run(main())
+    else:
+        # For desktop execution
+        asyncio.run(main())

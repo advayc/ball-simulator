@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ball-simulator"
+version = "1.0.0"
+description = "Interactive physics-based ball simulation with multiple visual styles"
+authors = [{name = "advayc", email = "your-email@example.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment :: Simulation",
+]
+keywords = ["pygame", "simulation", "physics", "animation", "web"]
+dependencies = [
+    "pygame-ce>=2.4.0",
+    "pygbag>=0.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/advayc/ball-simulator"
+Repository = "https://github.com/advayc/ball-simulator"
+"Bug Tracker" = "https://github.com/advayc/ball-simulator/issues"
+
+[project.scripts]
+ball-simulator = "main:start"
+
+[tool.setuptools]
+py-modules = ["main"]

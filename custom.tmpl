@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Simulator - Interactive Physics Demo</title>
+    <meta name="description" content="A mesmerizing physics-based ball simulation with dynamic visual styles">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header p {
+            margin: 10px 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .game-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .controls h3 {
+            margin: 10px 0;
+            color: #4CAF50;
+        }
+        
+        .controls p {
+            margin: 5px 0;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        canvas {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .game-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎱 Ball Simulator</h1>
+        <p>Interactive Physics Demo with Multiple Visual Styles</p>
+    </div>
+    
+    <div class="game-container">
+        <div class="loading" id="loading">🔄 Loading Ball Simulator...</div>
+        <div id="pygame-container">
+            <!-- Pygame canvas will be inserted here -->
+        </div>
+        
+        <div class="controls">
+            <h3>🎮 Controls</h3>
+            <p><strong>Click/Tap</strong> the style buttons to change animation modes:</p>
+            <p>🌈 <strong>Rainbow</strong> - Continuously cycling colors</p>
+            <p>✨ <strong>Neon Pulse</strong> - Dynamic pulsing with glow</p>
+            <p>💫 <strong>Particle Trail</strong> - Leaves colorful trails and particles</p>
+            <p>⚪ <strong>Classic</strong> - Simple white ball</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Built with ❤️ using <strong>Python</strong> + <strong>Pygame</strong> + <strong>PyGBag</strong></p>
+        <p><a href="https://github.com/advayc/ball-simulator" target="_blank" rel="noopener">View Source Code</a></p>
+    </div>
+    
+    <script>
+        // Hide loading message once pygame initializes
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
